@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import ir.sanwix.mhfragmentmanager.Interfaces.IBaseFragment;
+import ir.sanwix.mhfragmentmanager.Utils.MHFragmentManager;
 
 /**
  * Created by m.hoseini on 4/21/2018.
@@ -18,10 +19,12 @@ import ir.sanwix.mhfragmentmanager.Interfaces.IBaseFragment;
 
 public abstract class BaseFragment extends Fragment implements IBaseFragment
 {
+    protected MHFragmentManager fm
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        fm = new MHFragmentManager(this);
     }
 
     @Nullable

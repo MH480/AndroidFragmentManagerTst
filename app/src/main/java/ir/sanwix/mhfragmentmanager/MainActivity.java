@@ -14,4 +14,10 @@ public class MainActivity extends BaseActivty
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    @Override
+    public int getContainerID()
+    {
+        return 0;
+    }
 }

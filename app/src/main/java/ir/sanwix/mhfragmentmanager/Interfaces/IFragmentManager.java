@@ -16,8 +16,8 @@ public interface IFragmentManager
     void popTo(BaseFragment fragment,boolean isSelfInclude);
 
 
-    void replaceFragment(BaseFragment fragment,BaseFragment fragment2);
-    void replaceChildFragment(BaseFragment fragment,BaseFragment fragment2);
+    void replaceFragment(BaseFragment fragmentToHide,BaseFragment fragmentToShow);
+    void replaceChildFragment(BaseFragment fragmentToHide,BaseFragment fragmentToShow);
 
     void startChildFragment(BaseFragment fragment);
     void startChildFragment(BaseFragment fragment,boolean setAsRoot);

@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentManager;
  * Created by m.hoseini on 4/21/2018.
  */
 
-public class FragmentA extends BaseFragment
+public class FragmentC extends BaseFragment
 {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState)

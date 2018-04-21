@@ -4,7 +4,6 @@ import android.support.annotation.IdRes;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 
 import ir.sanwix.mhfragmentmanager.Base.BaseActivty;
 import ir.sanwix.mhfragmentmanager.Fragments.BaseFragment;
@@ -70,6 +69,21 @@ public class MHFragmentManager implements IFragmentManager
     {
         fm.popBackStack(fragment.toString(), isSelfInclude ? FragmentManager.POP_BACK_STACK_INCLUSIVE : 0);
     }
+
+    private void attach_detach(FragmentManager fm, BaseFragment fragment, boolean isAttach)
+    {
+        Fragment f = fm.findFragmentByTag(fragment.toString());
+        FragmentTransaction ft = fm.beginTransaction();
+        if (f != null)
+        {
+            if (isAttach)
+                ft.attach(f);
+            else
+                ft.detach(f);
+            ft.commit();
+        }
+    }
+
     //endregion
 
     @Override
@@ -143,4 +157,26 @@ public class MHFragmentManager implements IFragmentManager
             pop(mChildFragmentManager, fragment, isSelfInclude);
         }
     }
+
+    @Override
+    public void replaceFragment(BaseFragment fragmentToHide, BaseFragment fragmentToShow)
+    {
+        if (checkFM())
+        {
+            attach_detach(mFragmentManager, fragmentToHide, false);
+            attach_detach(mFragmentManager, fragmentToShow, true);
+        }
+    }
+
+    @Override
+    public void replaceChildFragment(BaseFragment fragmentToHide, BaseFragment fragmentToShow)
+    {
+        if (checkChildFM())
+        {
+            attach_detach(mChildFragmentManager, fragmentToHide, false);
+            attach_detach(mChildFragmentManager, fragmentToShow, true);
+        }
+    }
+
+
 }
